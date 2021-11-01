@@ -1,0 +1,44 @@
+<app-header></app-header>
+ <router-outlet></router-outlet>
+ <app-footer></app-footer>
+<!-- <app-edit-customer></app-edit-customer> -->
+<!--<app-all-customers 
+    *ngIf="isCurrentPageAllCustomers()" 
+    [customers]="customers" 
+    (addCustomer)="addCustomerButtonClick()"
+    (viewCustomer)="addViewButtonClick($event)" 
+    (editCustomer)="addEditButtonClick($event)"
+    (deleteCustomer)="addDeleteButtonClick($event)" 
+    (addPayment)="onAddPaymentDisplay($event)"
+    (viewPayment)="onViewPaymentDisplay($event)">
+</app-all-customers>
+
+<app-edit-customer 
+    *ngIf=" isCurrentPageCustomerEdit()" 
+    (addCustomerDetails)="onAddCustomerDetails($event)"
+    [customerDetails]="customerDetails" 
+    (editCustomerDetails)="onEditCustomerDetails($event)"
+    [isEditMode]="isCustomerEdit()">
+</app-edit-customer>
+
+<app-customer-details 
+    *ngIf="isCurrentPageCustomerDetails()" 
+    [customerDetails]="customerDetails"
+    (displayCustomers)="displayAllCustomers()">
+</app-customer-details>
+
+
+<app-add-payment 
+    *ngIf="isCurrentPageAddPayment()" 
+    (backToAllCustomersPage)="displayAllCustomers()"
+    (addPaymentDetails)="onAddPayment($event)">
+</app-add-payment>
+
+
+<app-view-payment 
+    *ngIf="isCurrentPageViewPayment()" 
+    [customerDetails]="customerDetails"
+    (viewPaymentDetails)="onviewPayment($event)"
+(editAllPaymentDetails)="oneditPayment($event)">
+</app-view-payment>
+-->

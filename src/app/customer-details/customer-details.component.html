@@ -1,0 +1,74 @@
+<section id="posts" class="py-4 mb-4 bg-light">
+    <div class="container" *ngIf="customerDetails">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <table class="table table-striped">
+                        <tr>
+                            <td>
+                                first name :
+
+                            </td>
+                            <td>
+                                {{customerDetails.firstName}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                last name :
+
+                            </td>
+                            <td>
+                                {{customerDetails.lastName}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Address:
+
+                            </td>
+                            <td>
+                                {{customerDetails.address}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                phone number :
+
+                            </td>
+                            <td>
+                                {{customerDetails.phoneNumber}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                aadhar :
+
+                            </td>
+                            <td>
+                                {{customerDetails.aadhar}}
+                            </td>
+                        </tr>
+
+                    </table>
+
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-3">
+                <button type="submit" class="btn btn-secondary w-50" (click)="displayAllCustomers()">Back</button>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- <app-view-payment [customerDetails]="customerDetails">
+        </app-view-payment> -->
+
+
+</section>
