@@ -1,37 +1,66 @@
 <div class="container">
-    <div class="col-6">
-    <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text" class="form-control" [(ngModel)]="customerDetails.firstName" placeholder="FirstName">
-    </div>
+    <form [formGroup]="customerForm">
+        <div class="form-row">
+            <div class="col-5">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" formControlName="name" placeholder="name">
+                    <span *ngIf="!customerForm.get('name').valid && customerForm.get('name').touched">Name is
+                        required</span>
 
-    <div class="form-group">
-        <label for="lastName">Last name</label>
-        <input type="text" class="form-control" [(ngModel)]="customerDetails.lastName" placeholder="LastName">
-    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-5">
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" formControlName="address" placeholder="Address">
+                    <span *ngIf="!customerForm.get('address').valid && customerForm.get('address').touched">Address is
+                        required</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
 
-    <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" class="form-control" [(ngModel)]="customerDetails.address" placeholder="Address">
-    </div>
+                <button class="form-control" class="btn btn-primary mt-2r" (click)=addPhoneNumberFields()><i
+                        class="fa fa-plus"></i> Add Phone</button>
+            </div>
+        </div>
+        <div class="form-group" formArrayName="phoneNumbers">
+            <div *ngFor="let phoneNumberControl of controls; let i = index" [formGroupName]="i">
+                <div class="form-row mt-3">
+                    <div class="col-6">
+                        <input type="tel" class="form-control" formControlName="phoneNumber" placeholder="PhoneNumber">
+                        <span
+                            *ngIf="!phoneNumberControl.get('phoneNumber').valid && phoneNumberControl.get('phoneNumber').touched">Please
+                            Enter
+                            valid phonenumber</span>
+                    </div>
 
-    <div class="form-group">
-        <label for="phoneNumber">Phone number</label>
-        <input type="number" class="form-control" [(ngModel)]="customerDetails.phoneNumber" placeholder="PhoneNumber">
-    </div>
+                    <div class="col">
+                        <select class="form-control" formControlName="phoneType">
+                            <option [value]="'mobile'" >Mobile</option>
+                            <option [value]="'landline'">Landline</option>
+                        </select>
+                    </div>
+                    <div  class="col">
+                        <button [disabled] ="i===0" [ngClass]="{'cursor-na':i===0}" class="form-control" class="btn btn-primary" (click)=deletePhoneFields(i)><i
+                                class="fa fa-trash"></i> Delete</button>
+                        <div>
+                        </div>
 
-    <div class="form-group">
-        <label for="emailAddress">Email Address</label>
-        <input type="email" class="form-control" [(ngModel)]="customerDetails.emailAddress" placeholder="EmailAddress">
-    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="number" class="form-control" [(ngModel)]="customerDetails.aadhar" placeholder="Aadhar(optional)">
-    </div>
+        <div>
+            <button [disabled]='!customerForm.valid || !customerForm.touched' type="submit" class="btn btn-primary"
+                (click)="onSubmitCustomerDetails()">Submit details</button>
+        </div>
 
-    <div>
-        <button type="submit" class="btn btn-primary" (click)="onSubmitCustomerDetails()">{{isEditMode?'Update' :'Submit'}} details</button>
-    </div>
-</div>
+    </form>
+
 </div>

@@ -1,18 +1,25 @@
 export class CustomerModel {
-    customerId:string;
-    firstName: string;
-    lastName: string;
-    address?: string;
-    phoneNumber: string;
-    aadhar?: string;
+    customerId: string;
+    name: string;
+    address: string;
+    phoneNumbers: PhoneNumberType[];
     emailAddress: string;
-    payments?: Payment[] = [];//one to many relation ship
+}
+
+export class phoneNumber {
+    phoneNumber: string;
+    type: PhoneNumberType;
 }
 export class Payment {
-    customerId:string;
+    customerId: string;
     money: any;
     interest: any;
     givenDate: any;
+}
+
+export enum PhoneNumberType {
+    LAND_LINE = 'landline',
+    MOBILE = 'mobile'
 }
 
 export enum PageType {

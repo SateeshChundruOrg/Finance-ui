@@ -17,9 +17,9 @@ export class ViewPaymentComponent implements OnInit {
 
     ngOnInit(): void {
 
-        if (this.customerDetails.payments) {
-            this.payments = this.customerDetails.payments;
-        }
+        // if (this.customerDetails.payments) {
+        //     this.payments = this.customerDetails.payments;
+        // }
 
     }
  onSubmitPaymentDetails() {

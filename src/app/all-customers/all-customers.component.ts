@@ -9,12 +9,6 @@ import { CustomerModel, Payment } from '../customer.model';
 })
 export class AllCustomersComponent implements OnInit {
 
-/*   @Output() addCustomer = new EventEmitter();
-  @Output() viewCustomer = new EventEmitter();
-  @Output() editCustomer = new EventEmitter();
-  @Output() deleteCustomer = new EventEmitter();
-  @Output() addPayment = new EventEmitter();
-  @Output() viewPayment = new EventEmitter(); */
 
   @Input() customers: CustomerModel[] = [
 
@@ -32,15 +26,11 @@ export class AllCustomersComponent implements OnInit {
   }
 
   onViewCustomerDetails(index) {
-    // this.viewCustomer.emit(index);
-    //console.log("onViewCustomerDetails method called " + index);
     this.router.navigate(['view-customer',index]);
   }
 
   onEditCustomerDetails(index) {
-    // this.editCustomer.emit(index);
   this.router.navigate(['edit-customer',index]);
-//edit-customer/3
   }
 
   onDeleteCustomerDetails(index) {

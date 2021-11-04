@@ -13,12 +13,12 @@ export class CustomerDetailsComponent implements OnInit {
   customerIndex: number;
 
   constructor(
-  private activatedRoute: ActivatedRoute,
-  private customerDetailsService: CustomerDetailsService,
-  private router: Router,) { }
+    private activatedRoute: ActivatedRoute,
+    private customerDetailsService: CustomerDetailsService,
+    private router: Router,) { }
 
   ngOnInit(): void {
-this.activatedRoute.paramMap.subscribe(param => {
+    this.activatedRoute.paramMap.subscribe(param => {
       this.customerIndex = +param.get('customerIndex');
       this.customerDetails = this.customerDetailsService.getCustomer(this.customerIndex);
     })

@@ -2,3 +2,11 @@
      
     justify-content: center;
   }
+
+  .mt-2r{
+    margin-top: 1.9rem;
+  }
+
+  .cursor-na{
+    cursor: not-allowed;
+  }

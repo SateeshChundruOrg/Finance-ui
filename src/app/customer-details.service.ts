@@ -7,34 +7,6 @@ import { CustomerModel, PageType } from './customer.model';
 export class CustomerDetailsService {
 
   customers: CustomerModel[] = [
-    {
-      'customerId': '1',
-      'firstName': 'krishna',
-      'lastName': 'a',
-      'emailAddress': 'ka@gmail.com',
-      'phoneNumber': '12345645645'
-    },
-    {
-      'customerId': '2',
-      'firstName': 'SAT',
-      'lastName': 'a',
-      'emailAddress': 'ka@gmail.com',
-      'phoneNumber': '12345645645'
-    },
-    {
-      'customerId': '3',
-      'firstName': 'SAT1',
-      'lastName': 'a',
-      'emailAddress': 'ka@gmail.com',
-      'phoneNumber': '12345645645'
-    },
-    {
-      'customerId': '4',
-      'firstName': 'SAT2',
-      'lastName': 'a',
-      'emailAddress': 'ka@gmail.com',
-      'phoneNumber': '12345645645'
-    }
 
   ];
   customerIndex: number = -1;
