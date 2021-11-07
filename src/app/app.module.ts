@@ -11,6 +11,7 @@ import { AddPaymentComponent } from './payment/add-payment.component';
 import { ViewPaymentComponent } from './payment/view-payment.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule    
   ],
   providers: [],
   bootstrap: [AppComponent]

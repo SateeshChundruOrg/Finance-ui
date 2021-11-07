@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { CustomerDetailsService } from '../customer-details.service';
+import { CustomersService } from '../customers-service';
 import { CustomerModel, Payment } from '../customer.model';
 
 @Component({
@@ -13,13 +13,14 @@ export class AllCustomersComponent implements OnInit {
   @Input() customers: CustomerModel[] = [
 
   ];
-  constructor(private customerDetailsService:CustomerDetailsService,
+  constructor(private customerService:CustomersService,
              private router: Router) { }
 
   ngOnInit(): void {
-    this.customers = this.customerDetailsService.getAllCustomers();
+    this.customerService.getAllCustomers().subscribe(customers =>{
+      this.customers = customers;
+    });
   }
-
 
   onCustomerAdd() {
    this.router.navigateByUrl('add-customer');
@@ -34,7 +35,7 @@ export class AllCustomersComponent implements OnInit {
   }
 
   onDeleteCustomerDetails(index) {
-  this.customerDetailsService.deleteCustomer(index);
+ // this.customerDetailsService.deleteCustomer(index);
     // this.deleteCustomer.emit(index);
 
   }

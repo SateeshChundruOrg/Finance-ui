@@ -27,17 +27,13 @@
                             <tr>
                             <th>#</th>
                             <th>
-                                First Name
+                                 Name
                             </th>
                             <th>
-                                Last Name
-
+                                Address
                             </th>
                             <th>
-                                Email Address
-                            </th>
-                            <th>
-                                Phone Number
+                                Phone Numbers
                             </th>
                             <th colspan="5">Actions</th>
                             </tr>
@@ -46,10 +42,11 @@
                         <tbody>
                             <tr *ngFor='let customer of customers; let i=index'>
                                 <td>{{i+1}}</td>
-                                <td>{{customer.firstName}}</td>
-                                <td>{{customer.lastName}}</td>
-                                <td>{{customer.emailAddress}}</td>
-                                <td>{{customer.phoneNumber}}</td>
+                                <td>{{customer.name}}</td>
+                                <td>{{customer.address}}</td>
+                                <td><ul>
+                                    <li *ngFor="let phoneNumber of customer.phoneNumbers">{{phoneNumber.phoneNumber}}</li>
+                                </ul></td>
                                 <td>
                                     <a routerLink="view-customer/{{i}}" class="btn btn-secondary">
                                         <i class="fas fa-angle-double-right"></i> View

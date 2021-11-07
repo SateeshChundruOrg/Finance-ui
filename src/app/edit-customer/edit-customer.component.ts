@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CustomerModel, Payment } from '../customer.model'
-import { CustomerDetailsService } from '../customer-details.service'
+import { CustomersService} from '../customers-service'
 import { ActivatedRoute, Router } from '@angular/router';
 import {v4 as uuidv4} from 'uuid'
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -18,7 +18,7 @@ export class EditCustomerComponent implements OnInit {
   customerForm:FormGroup;
   customerDetails:CustomerModel;
 
-  constructor(private customerDetailsService: CustomerDetailsService,
+  constructor(private customersService: CustomersService,
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
    
@@ -42,7 +42,7 @@ export class EditCustomerComponent implements OnInit {
       if (param.get('customerIndex')) {
         this.isEditMode = true;
         this.editIndex = +param.get('customerIndex');
-        this.customerDetails = this.customerDetailsService.getCustomer(this.editIndex);
+        // this.customerDetails = this.customerDetailsService.getCustomer(this.editIndex);
       }
     })
      
@@ -50,10 +50,11 @@ export class EditCustomerComponent implements OnInit {
   };
   onSubmitCustomerDetails() {
     console.log(this.customerForm.value.phoneNumbers)
-    return;
     const customerDetails = this.populateAndGetCustomerModel(this.customerForm.value);
-    this.customerDetailsService.addCustomer(customerDetails);
-    this.navigateToAllCustomersPage();
+    this.customersService.createCustomer(customerDetails).subscribe(()=>{
+      this.navigateToAllCustomersPage();
+    });
+    
        // if (this.isEditMode) {
     //   this.customerDetailsService.editCustomer(this.editIndex, this.customerDetails);
     //   this.isEditMode = false;
@@ -70,7 +71,8 @@ export class EditCustomerComponent implements OnInit {
     const customerDetails = new CustomerModel();
     customerDetails.name = formData.name;
     customerDetails.address = formData.address;
-    formData.phoneNumbers
+    const phoneNumbers = formData.phoneNumbers;
+    customerDetails.phoneNumbers = phoneNumbers
     return customerDetails;
   }
   navigateToAllCustomersPage() {
